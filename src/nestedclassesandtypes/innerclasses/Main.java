@@ -33,7 +33,7 @@ public class Main {
 
     public static void addPigLatinName(List<? extends StoreEmployee> list) {
         String lastName = "Piggy";
-        
+
         // Local Class
         class DecoratedEmployee extends StoreEmployee implements Comparable<DecoratedEmployee> {
             private String pigLatinName;
