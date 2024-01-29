@@ -64,3 +64,11 @@ where the key keeps a reference to a value.
 Keys need to be unique but values don't.
 
 Elements in a tree are sorted in a key value Node, also called an Entry.
+
+# What's a Collection's Class
+
+It's important to understand that the Collections class is not the
+Collections Framework.
+
+The framework contains many interfaces and implemented classes, as well
+as helper classes, which this Collections class is just one example.
