@@ -35,3 +35,14 @@ but depends on a backing collection that stores the data elements.
 
 They let us manipulate the collections, without really having to know
 exact details, about the storage of the data.
+
+## Ordered and Sorted Map implementations
+
+The Map interface has the **LinkedHashMap** and **TreeMap** classes.
+
+The LinkedHashMap is a key value entry collection, whose keys are ordered
+by insertion order.
+
+The TreeMap is sorted by it's keys, so a key needs to implement Comparable,
+or be initialized, with a specified Comparator.
+
