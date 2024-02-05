@@ -27,3 +27,11 @@ Three of the Java classes that implement the map interface are the
 
 The HashMap is unordered, the LinkedHashMap is ordered by insertion order,
 and the TreeMap is a sorted map.
+
+## The View
+
+The view, or view collection as Java calls it, doesn't store elements,
+but depends on a backing collection that stores the data elements.
+
+They let us manipulate the collections, without really having to know
+exact details, about the storage of the data.
