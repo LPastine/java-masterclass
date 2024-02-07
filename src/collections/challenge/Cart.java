@@ -31,6 +31,10 @@ public class Cart {
         return cartDate;
     }
 
+    public Map<String, Integer> getProducts() {
+        return products;
+    }
+
     public void addItem(InventoryItem item, int qty) {
         products.merge(item.getProduct().sku(), qty, Integer::sum);
 
@@ -67,7 +71,7 @@ public class Cart {
                     cartItem.getKey(), item.getProduct().name(), qty,
                     item.getPrice(), itemizedPrice);
         }
-        System.out.printf("Total Sale: $%.2f%n");
+        System.out.printf("Total Sale: $%.2f%n", total);
         System.out.println("--------------------------------------");
     }
 
