@@ -74,3 +74,18 @@ it.
 Using final on an **class** (static) method means subclasses can't 
 **hide** it.
 
+## Using final for variables
+
+It's important to understand, when you use final, it doesn't mean the
+variable is immutable at that point.
+
+It means you can't assign or reassign a new instance, or variable or
+expression to it, after the initialization.
+
+If you use final for a local variable in a code block, you can only
+initialize it fully, or assign it a value, just once.
+
+Any other additional assignments will result in a compiler error. 
+
+If you use final for method parameters, this means you cannot assign any
+values to the method parameters in the code.
