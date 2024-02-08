@@ -100,3 +100,22 @@ You can prevent:
 - Changes to methods, by not allowing code to override or hide existing functionality
 - Your classes from being extended
 - Instantiation of your classes
+
+# Immutable Object
+
+An immutable object doesn't change state, once it's created.
+
+An immutable object is a secure object, meaning calling code can't
+maliciously or mistakenly alter it.
+
+An immutable object simplifies concurrency design.
+
+## Strategies for Declaring a Class, to produce immutable objects
+
+Strategies:
+
+- Make instance fields private and final
+- Do not define any setter methods
+- Create defensive copies in any getters
+- Use a constructor or factory method to set data, making copies of mutable reference data
+- Mark the class final, or make all constructors private
