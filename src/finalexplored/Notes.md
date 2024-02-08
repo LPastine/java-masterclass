@@ -89,3 +89,14 @@ Any other additional assignments will result in a compiler error.
 
 If you use final for method parameters, this means you cannot assign any
 values to the method parameters in the code.
+
+## Controlling Change
+
+Java provides mechanisms to control changes, and extensibility of your
+code, at many different levels.
+
+You can prevent:
+- Changes to data in Instance fields, which is called the state of the object by not allowing clients or subclasses to have access to these fields.
+- Changes to methods, by not allowing code to override or hide existing functionality
+- Your classes from being extended
+- Instantiation of your classes
