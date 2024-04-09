@@ -3,6 +3,7 @@ package finalexplored.gameconsole;
 import finalexplored.gameconsole.game.GameConsole;
 import finalexplored.gameconsole.game.ShooterGame;
 import finalexplored.gameconsole.pirate.Pirate;
+import finalexplored.gameconsole.pirate.PirateGame;
 import finalexplored.gameconsole.pirate.Weapon;
 
 public class Main {
@@ -18,5 +19,13 @@ public class Main {
 
         Pirate tim = new Pirate("Tim");
         System.out.println(tim);
+
+        PirateGame.getTowns(0).forEach(System.out::println);
+        System.out.println("------------------------------------------");
+        PirateGame.getTowns(1).forEach(System.out::println);
+
+        var console = new GameConsole<>(new PirateGame("The Pirate Game"));
+        int playerIndex = console.addPlayer();
+        console.playGame(playerIndex);
     }
 }
