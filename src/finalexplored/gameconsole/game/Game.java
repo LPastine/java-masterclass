@@ -15,23 +15,23 @@ public abstract class Game<T extends Player> {
     }
 
     public String getGameName() {
-        if (standardActions == null) {
-            standardActions = new LinkedHashMap<>(Map.of(
-                    'I',
-                    new GameAction('I', 'Print Player Info', i -> this.printPlayer(i)),
-                    'Q',
-                    new GameAction('Q', 'Quit Game', this::quitGame)
-            ))
-        }
         return gameName;
     }
 
     public Map<Character, GameAction> getStandardActions() {
+        if (standardActions == null) {
+            standardActions = new LinkedHashMap<>(Map.of(
+                    'I',
+                    new GameAction('I', "Print Player Info", i -> this.printPlayer(i)),
+                    'Q',
+                    new GameAction('Q', "Quit Game", this::quitGame)
+            ));
+        }
         return standardActions;
     }
 
     public abstract T createNewPlayer(String name);
-    public abstract Map<Character, GameAction> gameActions(int playerIndex);
+    public abstract Map<Character, GameAction> getGameActions(int playerIndex);
 
     final int addPlayer(String name) {
         T player = createNewPlayer(name);
