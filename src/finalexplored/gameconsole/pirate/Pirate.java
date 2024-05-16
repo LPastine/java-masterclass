@@ -1,11 +1,9 @@
 package finalexplored.gameconsole.pirate;
 
-import finalexplored.gameconsole.game.Player;
-
 import java.util.*;
 
 public final class Pirate extends Combatant {
-    private final List<String> townsVisited = new LinkedList<>();
+    private final List<Town> townsVisited = new LinkedList<Town>();
     private List<Loot> loot;
     private List<Combatant> opponents;
     private List<Feature> features;
@@ -21,9 +19,9 @@ public final class Pirate extends Combatant {
     }
 
     boolean visitTown() {
-        List<String> levelTowns = PirateGame.getTowns(value("level"));
+        List<Town> levelTowns = PirateGame.getTowns(value("level"));
         if (levelTowns == null) return true;
-        String town = levelTowns.get(value("townIndex"));
+        Town town = levelTowns.get(value("townIndex"));
         if (town != null) {
             townsVisited.add(town);
             return false;
@@ -32,9 +30,9 @@ public final class Pirate extends Combatant {
     }
 
     public String information() {
-        var current = ((LinkedList<String>) townsVisited).getLast();
+        var current = ((LinkedList<Town>) townsVisited).getLast();
         String[] simpleNames = new String[townsVisited.size()];
-        Arrays.setAll(simpleNames, i -> townsVisited.get(i).split(",")[0]);
+        Arrays.setAll(simpleNames, i -> townsVisited.get(i).name());
         return "---> " + current +
                 "\n" + super.information() +
                 "\ntownsVisited=" + Arrays.toString(simpleNames);
@@ -42,7 +40,7 @@ public final class Pirate extends Combatant {
 
     private boolean visitNextTown() {
         int townIndex = value("townIndex");
-        var towns = PirateGame.getTowns(value("level"));
+        List<Town> towns = PirateGame.getTowns(value("level"));
         if (towns == null) return true;
         if (townIndex >= (towns.size()-1)) {
             System.out.println("Leveling up! Bonus: 500 points!");
