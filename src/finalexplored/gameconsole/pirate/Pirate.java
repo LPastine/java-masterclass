@@ -14,8 +14,20 @@ public final class Pirate extends Combatant {
     }
 
     boolean useWeapon() {
-        System.out.println("Used the " + super.getCurrentWeapon());
-        return visitNextTown();
+        int count = opponents.size();
+        if (count > 0) {
+            int opponentIndex = count - 1;
+            if (count > 1) {
+                opponentIndex = new Random().nextInt(count + 1);
+            }
+            Combatant combatant = opponents.get(opponentIndex);
+            if (super.useWeapon(combatant)) {
+                opponents.remove(opponentIndex);
+            } else {
+                return combatant.useWeapon(this);
+            }
+        }
+        return false;
     }
 
     boolean visitTown() {
@@ -24,9 +36,20 @@ public final class Pirate extends Combatant {
         Town town = levelTowns.get(value("townIndex"));
         if (town != null) {
             townsVisited.add(town);
+            loot = town.loot();
+            opponents = town.opponents();
+            features = town.features();
             return false;
         }
         return true;
+    }
+
+    boolean hasExperiences() {
+        return (features != null && features.size() > 0);
+    }
+
+    boolean hasOpponents() {
+        return (opponents != null && opponents.size() > 0);
     }
 
     public String information() {
@@ -36,6 +59,32 @@ public final class Pirate extends Combatant {
         return "---> " + current +
                 "\n" + super.information() +
                 "\ntownsVisited=" + Arrays.toString(simpleNames);
+    }
+
+    boolean findLoot() {
+        if (loot.size() > 0) {
+            Loot item = loot.remove(0);
+            System.out.println("Found " + item + "!");
+            adjustValue("score", item.getWorth());
+            System.out.println(name() + "'s score is now " + value("score"));
+        }
+
+        if (loot.size() == 0) {
+            return visitNextTown();
+        }
+
+        return false;
+    }
+
+    boolean experienceFeature() {
+        if (features.size() > 0) {
+            Feature item = features.remove(0);
+            System.out.println("Ran into " + item + "!");
+            adjustHealth(item.getHealthPoints());
+            System.out.println(name() + "'s health is now " + value("health"));
+        }
+
+        return (value("health") <= 0);
     }
 
     private boolean visitNextTown() {
