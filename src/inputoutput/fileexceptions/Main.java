@@ -11,15 +11,28 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        String filename = "testing.csv";
-        testFile2(null);
-        File file = new File(filename);
+        System.out.println("Current Working Directory (cwd) = " +
+                new File("").getAbsolutePath());
+        String filename = "src/inputoutput/fileexceptions/files/testing.csv";
+        File file = new File(new File("").getAbsolutePath(), filename);
+        System.out.println(file.getAbsolutePath());
         if (!file.exists()) {
             System.out.println("I can't run unless this file exists");
-            System.out.println("Quitting Application, go figure it out");
             return;
         }
         System.out.println("I'm good to go.");
+
+        for (File f : File.listRoots()) {
+            System.out.println(f);
+        }
+
+        Path path  = Paths.get("files/testing.csv");
+        System.out.println(file.getAbsolutePath());
+        if (!Files.exists(path)) {
+            System.out.println("2. I can't run unless this file exists");
+            return;
+        }
+        System.out.println("2. I'm good to go");
     }
     private static void testFile(String filename) {
         Path path = Paths.get(filename);
