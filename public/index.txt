@@ -1,0 +1,8 @@
+Directory Contents: 
+/home/lpastine/Dev/java-masterclass/public
+/home/lpastine/Dev/java-masterclass/public/assets
+/home/lpastine/Dev/java-masterclass/public/assets/icons
+/home/lpastine/Dev/java-masterclass/public/assets/icons/index.txt
+/home/lpastine/Dev/java-masterclass/public/assets/index.txt
+/home/lpastine/Dev/java-masterclass/public/index.txt
+Generated: 2024-06-04T08:24:52.184583457
