@@ -4,16 +4,19 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 class Player implements Serializable {
+    private final static long serialVersionUID = 1L;
     private String name;
     private int topScore;
-    private List<String> collectedWeapons = new ArrayList<>();
+    private long bigScore;
+    private List<String> collectedWeapons = new LinkedList<>();
 
     public Player(String name, int topScore, List<String> collectedWeapons) {
         this.name = name;
-        this.topScore = topScore;
+        this.bigScore = topScore;
         this.collectedWeapons = collectedWeapons;
     }
 
@@ -21,7 +24,7 @@ class Player implements Serializable {
     public String toString() {
         return "Player{" +
                 "name='" + name + '\'' +
-                ", topScore=" + topScore +
+                ", bigScore=" + bigScore +
                 ", collectedWeapons=" + collectedWeapons +
                 '}';
     }
@@ -29,16 +32,16 @@ class Player implements Serializable {
 
 public class Main {
     public static void main(String[] args) {
-        Path dataFile = Path.of("data.dat");
-        writeData(dataFile);
-        readData(dataFile);
+//        Path dataFile = Path.of("data.dat");
+//        writeData(dataFile);
+//        readData(dataFile);
 
         Player tim = new Player("Tim", 100_000_010,
                 List.of("knife", "machete", "pistol"));
         System.out.println(tim);
 
         Path timFile = Path.of("tim.dat");
-        writeObject(timFile, tim);
+//        writeObject(timFile, tim);
         Player reconstitutedTim = readObject(timFile);
         System.out.println(reconstitutedTim);
     }
