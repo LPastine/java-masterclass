@@ -15,7 +15,7 @@ public class MusicDML {
             String tableName = "music.artists";
             String columnName = "artist_name";
             String columnValue = "Bob Dylan";
-            if (!executeSelect(statement, tableName, columnName, columnValue)) {);
+            if (!executeSelect(statement, tableName, columnName, columnValue)) {
                 insertArtistAlbum(statement, columnValue, columnValue);
             } else {
                 try {
