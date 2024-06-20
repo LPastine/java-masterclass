@@ -17,7 +17,10 @@ public class Main {
 //            entityManager.persist(new Artist("Muddy Water"));
             Artist artist = entityManager.find(Artist.class, 202);
 //            Artist artist = new Artist(202, "Muddy Water");
-            artist.setArtistName("Muddy Waters");
+//            artist.setArtistName("Muddy Waters");
+            System.out.println(artist);
+//            artist.removeDuplicates();
+            artist.addAlbum("The Best of Muddy Waters");
             System.out.println(artist);
 //            entityManager.remove(artist);
 //            entityManager.merge(artist);
